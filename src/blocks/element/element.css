@@ -1,0 +1,16 @@
+.element {
+  width: 280px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+}
+
+@media (max-width: 930px){
+  .element {
+    width: 100%;
+    height: max-content;
+  }
+}
