@@ -10,7 +10,6 @@ class Api{
       headers: this.headers
     })
     .then(res => this._checkRequestResult(res))
-    .catch(error => this._errorHandler(error));
   }
 
   setPersonInfo(personName, personAbout){
@@ -23,7 +22,6 @@ class Api{
       })
     })
     .then(res => this._checkRequestResult(res))
-    .catch(error => this._errorHandler(error));
   }
 
   getCardsList(){
@@ -32,7 +30,6 @@ class Api{
       headers: this.headers
     })
     .then(res => this._checkRequestResult(res))
-    .catch(error => this._errorHandler(error));
   }
 
 
@@ -46,7 +43,6 @@ class Api{
       })
     })
     .then(res => this._checkRequestResult(res))
-    .catch(error => this._errorHandler(error));
   }
 
   deleteCard(cardID){
@@ -55,7 +51,6 @@ class Api{
       headers: this.headers
     })
     .then(res => this._checkRequestResult(res))
-    .catch(error => this._errorHandler(error));
   }
 
   setLike(cardID){
@@ -64,7 +59,6 @@ class Api{
       headers: this.headers
     })
     .then(res => this._checkRequestResult(res))
-    .catch(error => this._errorHandler(error));
   }
 
 
@@ -74,7 +68,6 @@ class Api{
       headers: this.headers
     })
     .then(res => this._checkRequestResult(res))
-    .catch(error => this._errorHandler(error));
   }
 
   setAvatar(url){
@@ -86,7 +79,6 @@ class Api{
       })
     })
     .then(res => this._checkRequestResult(res))
-    .catch(error => this._errorHandler(error));
   }
 
   _checkRequestResult(res) {
@@ -95,11 +87,6 @@ class Api{
     }
     return Promise.reject(`Возникла ошибка: ${res.status}`);
   }
-
-  _errorHandler(error) {
-    console.log(error);
-  }
-
 }
 
 export const api = new Api({
