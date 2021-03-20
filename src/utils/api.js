@@ -4,7 +4,7 @@ class Api{
     this.headers = config.headers;
   }
 
-  getPersonInfo(){
+  getUserInfo(){
     return fetch(this._url + `users/me` , {
       method: "GET",
       headers: this.headers
@@ -12,7 +12,7 @@ class Api{
     .then(res => this._checkRequestResult(res))
   }
 
-  setPersonInfo(personName, personAbout){
+  setUserInfo(personName, personAbout){
     return fetch(this._url + `users/me` , {
       method: "PATCH",
       headers: this.headers,

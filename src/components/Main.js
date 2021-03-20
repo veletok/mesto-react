@@ -1,44 +1,18 @@
 import {api} from '../utils/api.js'
 import Card from './Card.js'
 import React from 'react' // импорт библиотеки
-
+import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
 function Main(props){
-  const [userName, setUserName] = React.useState("Идёт загрузка");
-  const [userDescription , setUserDescription ] = React.useState("Идёт загрузка");
-  const [userAvatar, setUserAvatar] = React.useState();
-  const [cards, setCards] = React.useState([]);
 
-  React.useEffect(() => {
-    api.
-      getCardsList()
-      .then((data)=> {
-        setCards(data)
-      })
-      .catch((error)=> {
-        console.log(error);
-      })
-  }, [])
-
-  React.useEffect(() => {
-    api.
-      getPersonInfo()
-      .then((data)=> {
-        setUserName(data.name)
-        setUserDescription(data.about)
-        setUserAvatar(data.avatar)
-      })
-      .catch((error)=> {
-        console.log(error);
-      })
-  }, [])
+  const currentPerson = React.useContext(CurrentUserContext)
 
   return(
     <main>
         <section className="profile">
             <div className="profile__avatar-button" onClick={props.onEditAvatar}>
                 <img
-                src={userAvatar}
-                alt={userName}
+                src={currentPerson.avatar}
+                alt={currentPerson.name}
                 className="profile__img"/>
                 <div className="profile__hover">
                 <div className="profile__hover-button"></div>
@@ -46,8 +20,8 @@ function Main(props){
             </div>
             <div className="profile__info">
                 <div className="profile__text">
-                <h1 className="profile__title">{userName}</h1>
-                <p className="profile__subtitle">{userDescription}</p>
+                <h1 className="profile__title">{currentPerson.name}</h1>
+                <p className="profile__subtitle">{currentPerson.about}</p>
                 </div>
                 <button type="button" className="profile__edit-button" onClick={props.onEditProfile}></button>
             </div>
@@ -55,8 +29,8 @@ function Main(props){
         </section>
         <section className="elements-list">
             <ul className="elements">
-              {cards.map((card, i) => (
-                <Card card={card} key={card._id} onCardClick={props.onCardClick}/>
+              {props.cards.map((card, i) => (
+                <Card card={card} key={card._id} onCardClick={props.onCardClick} onCardLike={props.handleCardLike} onCardDelete={props.handleCardDelete}/>
               ))}
             </ul>
         </section>
