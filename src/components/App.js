@@ -49,18 +49,24 @@ function App() {
     if(!isLiked) {
       api.setLike(card._id).then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+      })
+      .catch((error)=> {
+        console.log(error);
       });
     }
     if(isLiked) {
       api.removeLike(card._id).then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+      })
+      .catch((error)=> {
+        console.log(error);
       });
     }
   }
 
   function handleCardDelete(card) {
     api.deleteCard(card._id).then(() => {
-      setCards((state) => state.filter((e => e != card)))
+      setCards((state) => state.filter((e => e._id !== card._id)))
     });
   }
 

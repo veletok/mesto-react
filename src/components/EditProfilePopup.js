@@ -1,5 +1,6 @@
 import React from 'react' // импорт библиотеки
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
+import PopupWithForm from './PopupWithForm.js'
 
 function EditProfilePopup(props) {
   const currentPerson = React.useContext(CurrentUserContext)
@@ -31,14 +32,7 @@ function EditProfilePopup(props) {
 
 
   return(
-    <section className={`popup popup-edit ${props.isOpen ? `popup_opened` : ``}`}>
-    <div className="popup__content">
-      <button
-        type="button"
-        className={`popup__button-close popup__edit-close`}
-        onClick={props.onClose}
-      ></button>
-      <h3 className="popup__title">Редактировать профиль</h3>
+    <PopupWithForm buttonText="Сохранить" name="edit" title="Редактировать профиль" isOpen = {props.isOpen} onClose = {props.onClose} children={(
       <form className= {`popup__form popup__form_edit`} name="edit" onSubmit={handleSubmit} noValidate>
         <input
           type="text"
@@ -67,9 +61,8 @@ function EditProfilePopup(props) {
         />
         <span id="title-input-error" className="popup__input-error"></span>
        <button type="submit" className={`popup__button-submit popup__button-submit_edit`}>Сохранить</button>
-      </form>
-    </div>
-  </section>
+      </form>)
+      }/>
   )
 }
 
