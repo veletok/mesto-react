@@ -1,6 +1,6 @@
 function ImagePopup(props){
   return(
-    <section className={`popup popup-image ${Object.keys(props.selectedCard).length === 0 ? `` : `popup_opened`}`}>
+    <section className={`popup popup-image ${Object.keys(props.selectedCard).length === 0 ? `` : `popup_opened`}`} onClick={props.onClose}>
       <div className="popup-image__container">
         <button
           type="button"

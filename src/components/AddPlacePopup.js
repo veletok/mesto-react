@@ -22,8 +22,8 @@ function AddPlacePopup(props){
     setPlaceUrl('')
   }
   return(
-    <PopupWithForm buttonText="Сохранить" name="add" title="Новое место" isOpen = {props.isOpen} onClose = {props.onClose} children={(
-        <form className= {`popup__form popup__form_add`} name="add" noValidate onSubmit={handleSubmit}>
+    <PopupWithForm buttonText="Сохранить" name="add" title="Новое место" isOpen = {props.isOpen} onClose = {props.onClose} onSubmit={handleSubmit} buttonText={`Сохранить`} children={(
+        <>
           <input
             type="text"
             id="placename-input"
@@ -48,8 +48,7 @@ function AddPlacePopup(props){
             value={placeUrl}
           />
           <span id="placeurl-input-error" className="popup__input-error"></span>
-          <button type="submit" className={`popup__button-submit popup__button-submit_add`}>Сохранить</button>
-        </form>)
+        </>)
         }/>
   )
 }
