@@ -74,13 +74,11 @@ function App() {
     setSelectedCard(data)
   }
 
-  function closeAllPopups(e) {
-    if(e.target.classList.contains('popup') || e.target.classList.contains('popup__button-close')){
-      setEditAvatarPopupOpen(false);
-      setEditProfilePopupOpen(false);
-      setAddPlacePopupOpen(false)
-      setSelectedCard({});
-    }
+  function closeAllPopups() {
+    setEditAvatarPopupOpen(false);
+    setEditProfilePopupOpen(false);
+    setAddPlacePopupOpen(false)
+    setSelectedCard({});
   }
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
